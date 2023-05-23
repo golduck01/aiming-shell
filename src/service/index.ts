@@ -1,6 +1,7 @@
 import sqlite3 from "sqlite3";
 import { open } from "sqlite";
 import dayjs from "dayjs";
+import SQL from "sql-template-strings";
 
 async function createDB() {
   const db = await open({
@@ -9,32 +10,36 @@ async function createDB() {
   });
   try {
     console.log(db);
-    await db.exec(`
-    CREATE TABLE record_group
-    (id INTEGER PRIMARY KEY   AUTOINCREMENT),
-    (name text),
-    (created_at text),
-    (description text),
-    (records text),
-    (alias text),
-    (description text),
-    `);
+    // 删除表
+    // await db.exec("DROP TABLE record_group");
+    // await db.exec(
+    //   SQL`CREATE TABLE record_group (id INTEGER PRIMARY KEY  AUTOINCREMENT,name text,created_at text,description text,records text)`
+    // );
     const records = {
-      statement: "",
-      description: "",
+      statement: "js Clash",
+      description: "打开 Clash",
     };
-    await db.exec(
-      `INSERT INTO record_group VALUES (
-        "nginx",
-        "${dayjs().format("YYYY-MM-DD HH:mm:ss")}",
-        "nginx 命令组",
-        "${records}"
-        )`,
-      {}
+
+    const rowData = {
+      $name: "nginx",
+      $created_at: dayjs().format("YYYY-MM-DD HH:mm:ss"),
+      $description: "nginx 命令组",
+      $records: JSON.stringify(records),
+    };
+    // 坑 数据插入不能直接 用方法param解析 需要使用prepare方法准备语句
+    const stmt = await db.prepare(
+      SQL`INSERT
+      INTO record_group (name, created_at, description, records)
+      VALUES ($name,$created_at,$description,$records)`
     );
-    await db.exec("delete from tbl");
-    const tab1 = await db.get("select * from record_group");
-    console.log(tab1);
+    const data = await stmt.run(rowData);
+    console.log(data);
+    // await db.run("UPDATE record_group SET name = $name WHERE id = $id", {
+    //   $id: 1,
+    //   $name: "bar",
+    // });
+    // const tab1 = await db.get("select * from record_group");
+    // console.log(tab1);
   } catch (e) {
     const error = e as Error;
     console.log(error);
