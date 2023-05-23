@@ -6,11 +6,13 @@ specifiers:
   '@typescript-eslint/parser': ^5.59.5
   chalk: ^5.2.0
   commander: ^10.0.1
+  dayjs: ^1.11.7
   eslint: ^8.40.0
   eslint-config-airbnb-typescript-prettier: ^5.0.0
   inquirer: ^9.2.3
   path: ^0.12.7
   prettier: ^2.8.8
+  sql-template-strings: ^2.2.2
   sqlite: ^4.2.0
   sqlite3: ^5.1.6
   ts-node: ^10.9.1
@@ -20,8 +22,10 @@ specifiers:
 dependencies:
   chalk: 5.2.0
   commander: 10.0.1
+  dayjs: 1.11.7
   inquirer: 9.2.3
   path: 0.12.7
+  sql-template-strings: 2.2.2
   sqlite: 4.2.0
   sqlite3: 5.1.6
 
@@ -711,6 +715,10 @@ packages:
   /damerau-levenshtein/1.0.8:
     resolution: {integrity: sha512-sdQSFB7+llfUcQHUQO3+B8ERRj0Oa4w9POWMI/puGtuf7gFywGmkaLCElnudfTiKZV+NvHqL0ifzdrI8Ro7ESA==}
     dev: true
+
+  /dayjs/1.11.7:
+    resolution: {integrity: sha512-+Yw9U6YO5TQohxLcIkrXBeY73WP3ejHWVvx8XCk3gxvQDCTEmS48ZrSZCKciI7Bhl/uCMyxYtE9UqRILmFphkQ==}
+    dev: false
 
   /debug/3.2.7:
     resolution: {integrity: sha512-CFjzYYAi4ThfiQvizrFQevTTXHtnCqWfe7x1AhgEscTz6ZbLbfoLRLPugTQyBth6f8ZERVUSyWHFD/7Wu4t1XQ==}
@@ -2564,6 +2572,11 @@ packages:
       smart-buffer: 4.2.0
     dev: false
     optional: true
+
+  /sql-template-strings/2.2.2:
+    resolution: {integrity: sha512-UXhXR2869FQaD+GMly8jAMCRZ94nU5KcrFetZfWEMd+LVVG6y0ExgHAhatEcKZ/wk8YcKPdi+hiD2wm75lq3/Q==}
+    engines: {node: '>=4.0.0'}
+    dev: false
 
   /sqlite/4.2.0:
     resolution: {integrity: sha512-T7Gx2RMMkF9AGB7ge8nTQK2FQxJfpAkPKy6oXvgvHlZCPsKoBH/6dBLfyyw+aaAxMxseQAYGJOLQP+0+ridk4A==}
