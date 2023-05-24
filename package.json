@@ -9,6 +9,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "ts-node": "ts-node ./handle-themes-file/main.ts",
+    "schema": "ts-node ./src/service/createSchema.ts",
     "lint": "eslint \"src/**/*.ts*\""
   },
   "keywords": [],
